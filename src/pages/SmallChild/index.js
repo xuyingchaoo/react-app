@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import '../../static/css/common.less'
 export default class SmallChild extends React.Component{
     constructor(props){
@@ -6,6 +6,7 @@ export default class SmallChild extends React.Component{
         this.state = {
             fatherMsg:''
         }
+        console.log('SmallChild',this.props)
     }
     sayDad = (msg)=>{
         // this.fatherMsg = msg
@@ -14,13 +15,22 @@ export default class SmallChild extends React.Component{
         })
     }
     render(){
-        let {fatherMsg} = this.state;
+        let {fatherMsg} = this.state
         return(
             <div className="child-wrapper">
-                SmallChild
-                <button onClick={()=>this.props.getSonMsg('我是你的SmallChild!')} style={{marginLeft:'20px'}}>向爸爸传话</button>
+                {
+                    this.props.msg ?
+                        <ul>
+                            <li>{this.props.msg.name}</li>
+                            <li>{this.props.msg.sex}</li>
+                            <li>{this.props.msg.age}</li>
+                        </ul>:
+                        'SmallChild!'
+                }
+
+                <button onClick={()=>this.props.getSonMsg('我是你的SmallChild!')}>向爸爸传话</button>
                 <p>{fatherMsg}</p>
             </div>
-        );
+        )
     }
 }

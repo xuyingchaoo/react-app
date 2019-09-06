@@ -8,6 +8,10 @@ export default class BigChild extends React.Component{
             fatherMsg:''
         }
     }
+    componentDidMount() {
+        console.log('BigChild',this.props)
+    }
+
     sayDad = (msg)=>{
         // this.fatherMsg = msg
         this.setState({
@@ -18,10 +22,18 @@ export default class BigChild extends React.Component{
         let {fatherMsg} = this.state
         return(
             <div className="child-wrapper">
-                BigChild <button onClick={()=>this.props.getSonMsg('我是你的BigChild!')} style={{marginLeft:'20px'}}>向爸爸传话</button>
-                <p>{this.props.msg}</p>
+                {
+                    this.props.msg ?
+                        <ul>
+                            <li>{this.props.msg.name}</li>
+                            <li>{this.props.msg.sex}</li>
+                            <li>{this.props.msg.age}</li>
+                        </ul>:
+                        'BigChild!'
+                }
+                <button onClick={()=>this.props.getSonMsg('我是你的BigChild!')}>向爸爸传话</button>
                 <p>{fatherMsg}</p>
             </div>
-        );
+        )
     }
 }
