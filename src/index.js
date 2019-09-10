@@ -2,10 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import * as serviceWorker from './serviceWorker'
-import RouterComponent from './router'
+// import Router from './router'
+import App from './App'
+
 
 ReactDOM.render(
-    <RouterComponent/>,
+    <App/>,
     document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change
