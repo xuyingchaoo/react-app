@@ -1,12 +1,15 @@
 import React from 'react'
+import { Button } from 'antd'
 import '../../static/css/common.less'
+import store from '../../store'
 export default class SmallChild extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            fatherMsg:''
+            fatherMsg:'',
+            childInfo:store.getState()
         }
-        console.log('SmallChild',this.props)
+        console.log('SmallChild',this.props,store.getState())
     }
     sayDad = (msg)=>{
         // this.fatherMsg = msg
@@ -15,7 +18,7 @@ export default class SmallChild extends React.Component{
         })
     }
     render(){
-        let {fatherMsg} = this.state
+        let {fatherMsg,childInfo} = this.state
         return(
             <div className="child-wrapper">
                 {
@@ -25,10 +28,10 @@ export default class SmallChild extends React.Component{
                             <li>{this.props.msg.sex}</li>
                             <li>{this.props.msg.age}</li>
                         </ul>:
-                        'SmallChild!'
+                        childInfo.smallChild.name
                 }
 
-                <button onClick={()=>this.props.getSonMsg('我是你的SmallChild!')}>向爸爸传话</button>
+                <Button onClick={()=>this.props.getSonMsg('我是你的SmallChild!')}  type="primary">跟爸爸通信</Button>
                 <p>{fatherMsg}</p>
             </div>
         )

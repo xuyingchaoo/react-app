@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import BigChild from '../BigChild'
 import SmallChild from '../SmallChild'
 import store from '../../store'
+import { Button } from 'antd'
 import './index.less'
 export default class Father extends React.Component{
     constructor(props){
@@ -44,27 +45,25 @@ export default class Father extends React.Component{
         })
     }
     turnToPage = () =>{
-        console.log(this)
-        // this.props.history.push({pathname:'/SmallChild',query:{name:'爸爸',sex:'男',age:'30'}})
+        // console.log(this)
+        this.props.history.push({pathname:'/SmallChild',query:{name:'爸爸',sex:'男',age:'30'}})
         // this.props.location.query
+
     }
-    // turnToPage(){
-    //     console.log(this)
-    // }
     render(){
-        let {sonMsg,childInfo} = this.state,
+        let {sonMsg,childInfo,msg} = this.state,
             {bigChild,smallChild} = childInfo
         return(
             <div className="father">
-                我是爸爸,下面是我两个孩子：
+                我是爸爸,下面是我两个孩子：{msg}
                 <ul>
                     <li><Link to="/BigChild/朱碧石">{bigChild.name}</Link></li>
                     <li><Link to={{pathname :'/SmallChild',query :{name:'易烊千玺'}}} >{smallChild.name}</Link></li>
                     <li onClick={this.turnToPage}>点我跳转</li>
                 </ul>
                 <div style={{marginTop:'20px'}}>
-                    <button onClick={this.sayDad}  style={{marginRight:'20px'}} >叫爸爸</button>
-                    <button onClick={this.updateInfo}>更新store数据</button>
+                    <Button onClick={this.sayDad} style={{marginRight:'20px'}} type="primary">叫爸爸</Button>
+                    <Button onClick={this.updateInfo} type="primary">更新store数据</Button>
                 </div>
                 <p>{sonMsg}</p>
                 <BigChild getSonMsg={this.getSonMsg}

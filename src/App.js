@@ -8,7 +8,6 @@ import BigChild from './pages/BigChild'
 import SmallChild from './pages/SmallChild'
 import Clock from './pages/Clock'
 import LifeCycle from './pages/LifeCycle'
-// import Router from './router'
 
 export default class RouterComponent extends React.Component{
   constructor(props){
@@ -26,7 +25,6 @@ export default class RouterComponent extends React.Component{
     let {menu} = this.state
     return (
         <div className="App">
-          {/*<Router/>*/}
           <Layout className="layout">
             <Router>
             <Header>
@@ -43,7 +41,6 @@ export default class RouterComponent extends React.Component{
                   })
                 }
               </Menu>
-
             </Header>
             <Content style={{ padding: '0 50px' }}>
               <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>

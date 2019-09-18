@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button } from 'antd'
 import '../../static/css/common.less'
 
 export default class BigChild extends React.Component{
@@ -13,6 +14,7 @@ export default class BigChild extends React.Component{
     }
 
     sayDad = (msg)=>{
+        // error
         // this.fatherMsg = msg
         this.setState({
             fatherMsg:msg
@@ -31,7 +33,7 @@ export default class BigChild extends React.Component{
                         </ul>:
                         'BigChild!'
                 }
-                <button onClick={()=>this.props.getSonMsg('我是你的BigChild!')}>向爸爸传话</button>
+                <Button onClick={()=>this.props.getSonMsg('我是你的BigChild!')}  type="primary">跟爸爸通信</Button>
                 <p>{fatherMsg}</p>
             </div>
         )
